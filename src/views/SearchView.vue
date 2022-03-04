@@ -1,7 +1,7 @@
 <template>
-  <div class="about">
-       <ul id="listFavoris">
-      <li v-for="movie of data" :key="movie.id">
+  <div class="search">
+    <ul id="resultSearch">
+      <li v-for="movie of $store.state.searchResult" :key="movie.id">
         <img
           v-if="movie.poster_path === null"
           :src="require('@/assets/pellicule.png')"
@@ -24,19 +24,10 @@
 
 <script>
 
-
 export default {
-  
-  name: 'listeFavoris',
-  
-  data() {
-    return {
-      favoris: this.$store.state.favoris,
-      data: this.$store.state.dataFavoris,
-    };
-  },
- 
-   filters: {
+  name: "SearchView",
+
+  filters: {
     imageSrc: function (value) {
       return "https://image.tmdb.org/t/p/w500/" + value;
     },
@@ -46,8 +37,7 @@ export default {
     },
   },
 
-  
-}
+};
 </script>
 
 <style scoped>
@@ -55,7 +45,7 @@ ul {
   list-style: none;
 }
 
-#listFavoris {
+#resultSearch {
   display: flex;
   flex-wrap: wrap;
 }

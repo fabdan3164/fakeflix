@@ -1,12 +1,26 @@
 <template>
   <div id="app">
+
+    <h1>FAKEFLIX</h1>
     <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <router-link to="/">Accueil</router-link> |
+      <router-link to="/about">Favoris</router-link> |
+        <router-link to="/LoginView">Login</router-link> |
+       <SearchMoovie/>
     </nav>
     <router-view/>
   </div>
 </template>
+<script>
+import SearchMoovie from './components/SearchMoovie.vue'
+
+
+export default {
+  components: {
+    SearchMoovie,
+  },
+}
+</script>
 
 <style>
 #app {
@@ -19,6 +33,8 @@
 
 nav {
   padding: 30px;
+  display: flex;
+  justify-content: space-between;
 }
 
 nav a {
@@ -27,6 +43,18 @@ nav a {
 }
 
 nav a.router-link-exact-active {
-  color: #42b983;
+  color: white;
+}
+
+
+nav {
+  background-color: grey;
+}
+
+h1 {
+  color: red;
+}
+body {
+  background-color: black;
 }
 </style>
