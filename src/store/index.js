@@ -133,6 +133,22 @@ export default new Vuex.Store({
           "favorite": true
         }),
       })
+    },
+
+
+    deletToFavoris: function (context, value) {
+      fetch('https://api.themoviedb.org/3/account/' + this.state.acountId + '/favorite?api_key=' + this.state.apikey+'&session_id='+this.state.sessionId, {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          "media_type": "movie",
+          "media_id": value,
+          "favorite": false
+        }),
+      })
     }
 
 

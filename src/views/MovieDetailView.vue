@@ -27,7 +27,8 @@
     </div>
     <div class="fetch">
       <button @click="addToFavoris">Ajouter aux favoris</button>
-      <button>Ajouter aux "A voir"</button>
+       <button @click="deletToFavoris">Supprimer des favoris</button>
+      <button >Ajouter aux "A voir"</button>
     </div>
   </div>
 </template>
@@ -65,6 +66,10 @@ export default {
   methods: {
     addToFavoris() {
       this.$store.dispatch('addToFavoris', this.MovieSelect.id)
+   },
+
+       deletToFavoris() {
+      this.$store.dispatch('deletToFavoris', this.MovieSelect.id)
    },
   },
 };
