@@ -64,8 +64,8 @@ export default {
   },
   methods: {
     addToFavoris() {
-      this.$store.commit("addFavoris", this.MovieSelect.id);
-    },
+      this.$store.dispatch('addToFavoris', this.MovieSelect.id)
+   },
   },
 };
 </script> 

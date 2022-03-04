@@ -1,7 +1,7 @@
 <template>
   <div class="about">
-       <ul id="listFavoris">
-      <li v-for="movie of data" :key="movie.id">
+    <ul id="listFavoris">
+      <li v-for="movie of data.results" :key="movie.id">
         <img
           v-if="movie.poster_path === null"
           :src="require('@/assets/pellicule.png')"
@@ -22,21 +22,19 @@
   </div>
 </template>
 
+
+
 <script>
-
-
 export default {
-  
-  name: 'listeFavoris',
-  
+  name: "listeFavoris",
+
   data() {
     return {
-      favoris: this.$store.state.favoris,
-      data: this.$store.state.dataFavoris,
+      data: '',
     };
   },
- 
-   filters: {
+
+  filters: {
     imageSrc: function (value) {
       return "https://image.tmdb.org/t/p/w500/" + value;
     },
@@ -46,8 +44,12 @@ export default {
     },
   },
 
-  
-}
+  created: function () {
+      fetch('https://api.themoviedb.org/3/account/{account_id}/favorite/movies?api_key=' + this.$store.state.apikey + '&session_id=' + this.$store.state.sessionId + '&language=fr-FR&sort_by=created_at.asc&page=1')
+        .then(result => result.json())
+        .then(data => this.data = data) 
+  },
+};
 </script>
 
 <style scoped>

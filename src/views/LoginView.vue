@@ -23,66 +23,10 @@ export default {
   },
 
   methods: {
-  getToken: function () {
-        this.$store.commit('addUser', {user:this.user, mdp:this.mdp}),
-        this.$store.commit('getToken')    
-},
-
-  //   getToken: function () {
-  //     fetch(
-  //       "https://api.themoviedb.org/3/authentication/token/new?api_key=059776db5a1c39dd571e19ff2224eba0"
-  //     )
-  //       .then((result) => result.json())
-  //       .then((data) => {
-  //         this.tokenFirst = data.request_token;
-  //         console.log("data", data);
-  //         this.getToken2();
-  //       });
-  //   },
-
-  //   getToken2: function () {
-  //     fetch(
-  //       "https://api.themoviedb.org/3/authentication/token/validate_with_login?api_key=059776db5a1c39dd571e19ff2224eba0",
-  //       {
-  //         method: "POST",
-  //         headers: {
-  //           Accept: "application/json",
-  //           "Content-Type": "application/json",
-  //         },
-  //         body: JSON.stringify({
-  //           username: this.user,
-  //           password: this.mdp,
-  //           request_token: this.tokenFirst,
-  //         }),
-  //       }
-  //     )
-  //       .then((resulttok) => resulttok.json())
-  //       .then((datatok) => {
-  //         this.tokenSecond = datatok.request_token;
-  //         console.log(datatok.request_token);
-  //         this.getSessionId();
-  //       });
-  //   },
-
-  //   getSessionId: function () {
-  //     fetch(
-  //       "https://api.themoviedb.org/3/authentication/session/new?api_key=059776db5a1c39dd571e19ff2224eba0",
-  //       {
-  //         method: "POST",
-  //         headers: {
-  //           Accept: "application/json",
-  //           "Content-Type": "application/json",
-  //         },
-  //         body: JSON.stringify({
-  //           request_token: this.tokenSecond,
-  //         }),
-  //       }
-  //     )
-  //       .then((resultses) => resultses.json())
-  //       .then((datases) => {
-  //     this. sessionId = datases.session_id;
-  //       });
-  //   },
+    getToken: function () {
+      this.$store.commit("addUser", { user: this.user, mdp: this.mdp }),
+      this.$store.dispatch('getToken')
+    },
   },
 };
 </script>

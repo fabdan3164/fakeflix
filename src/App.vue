@@ -19,7 +19,16 @@ export default {
   components: {
     SearchMoovie,
   },
+
+
+  created: function (){
+  var local_Storage = JSON.parse(localStorage.getItem('login'))
+  this.$store.commit("addacountId", local_Storage.acountId)
+  this.$store.commit("addsessionId", local_Storage.sessionId)
+  },
 }
+
+
 </script>
 
 <style>
